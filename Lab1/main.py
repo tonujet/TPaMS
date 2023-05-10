@@ -1,5 +1,6 @@
 import numpy as np
 from TaskB import *
+from TaskC import *
 
 n = 121
 mean_square_deviation = 1.3
@@ -14,6 +15,8 @@ print("Мода: ", mode(sample))
 print("Вибіркова дисперсія: ", sample_variance(sample))
 print("Вибіркове середньоквадратичне відхилення: ", sample_mean_squared_deviation(sample))
 
+# Task C
+build_graphics(10, sample)
 
 
 
