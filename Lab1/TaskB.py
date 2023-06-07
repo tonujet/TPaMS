@@ -1,6 +1,7 @@
 import math
 
 
+
 # Вибіркове середнє
 def sample_mean(sample):
     arr_sum = 0
