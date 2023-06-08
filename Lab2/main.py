@@ -15,13 +15,12 @@ print("Variant: ", 120 % 11 + 11 * 5)
 print("\n\n\t\t\t\t------------Task 1------------\n")
 print("Вибірка: ", sample)
 print("\nВибіркове середнє: ", stats.sample_mean(sample))
-print("Вибіркове середньоквадратичне відхилення: ",
-      round(stats.sample_mean_squared_deviation(sample), 3))
+print("Вибіркове середньоквадратичне відхилення: ",standard_deviation)
 
-print("\nДвохсторонній довірчий інтервал для математичного сподівання з рівнем довіри 95%",
+print("\nДвохсторонній довірчий інтервал для математичного сподівання з рівнем довіри 95%:\n",
       mean_interval(sample, confidence, standard_deviation))
 
-print("\nДвохсторонній довірчий інтервал для середньоквадратичного відхилення з рівнем довіри 95%",
+print("\nДвохсторонній довірчий інтервал для середньоквадратичного відхилення з рівнем довіри 95%:\n",
       square_deviation_interval(sample, confidence))
 
 # Task B
