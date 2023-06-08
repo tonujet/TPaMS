@@ -12,7 +12,8 @@ def intervals_for_diff_confidence_for_mi(sample, standard_deviation, conf_diff=0
     confidence = start_conf_value + conf_diff
 
     while round(confidence, 3) < 1:
-        result[round(confidence, 3)] = mean_interval(sample, confidence, standard_deviation)
+        interval = mean_interval(sample, confidence, standard_deviation)
+        result[round(confidence, 3)] = interval, abs(interval[0] - interval[1])
         confidence += conf_diff
 
     return result
@@ -24,7 +25,8 @@ def intervals_for_diff_confidence_for_sdi(sample, conf_diff=0.1, start_conf_valu
     confidence = start_conf_value + conf_diff
 
     while round(confidence, 3) < 1:
-        result[round(confidence, 3)] = square_deviation_interval(sample, confidence)
+        interval = square_deviation_interval(sample, confidence)
+        result[round(confidence, 3)] = interval, abs(interval[0] - interval[1])
         confidence += conf_diff
 
     return result
@@ -37,7 +39,8 @@ def intervals_for_diff_sample_size_for_mi(standard_deviation, max_size=80, diff_
 
     while n <= max_size:
         sample = np.random.normal(0.0, standard_deviation, n).round(decimals=2)
-        result[n] = mean_interval(sample, 0.95, standard_deviation)
+        interval =  mean_interval(sample, 0.95, standard_deviation)
+        result[n] = interval, abs(interval[0] - interval[1])
         n += diff_size
 
     return result
@@ -50,7 +53,8 @@ def intervals_for_diff_sample_size_for_sdi(standard_deviation, max_size=80, diff
 
     while n <= max_size:
         sample = np.random.normal(0.0, standard_deviation, n).round(decimals=2)
-        result[n] = square_deviation_interval(sample, 0.95)
+        interval = square_deviation_interval(sample, 0.95)
+        result[n] = interval, abs(interval[0] - interval[1])
         n += diff_size
 
     return result
@@ -58,4 +62,4 @@ def intervals_for_diff_sample_size_for_sdi(standard_deviation, max_size=80, diff
 
 def dict_printer(dict):
     for key, value in dict.items():
-        print(key, ' : ', value)
+        print(key, ' : ', value[0], " diff ", value[1])
