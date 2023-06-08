@@ -10,7 +10,7 @@ def mean_interval(sample, confidence, standard_deviation):
     z = abs(st.norm.ppf(alpha / 2))
     mean = stats.sample_mean(sample)
 
-    # interval bounds
+    # Границі інтервалу
     lower_bound = mean - z * standard_deviation / math.sqrt(n)
     upper_bound = mean + z * standard_deviation / math.sqrt(n)
     return lower_bound, upper_bound
